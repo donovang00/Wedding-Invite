@@ -1,156 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Donovan & Dominic Wedding</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donovan & Dominic Wedding</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
-<style>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  padding: 20px; /* 🔥 THIS FIXES BORDER CUTTING */
-  background: linear-gradient(to bottom, #f6f2e8, #ece5d8);
-  font-family: 'Cormorant Garamond', serif;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 28px 16px;
+      background:
+        radial-gradient(circle at top, #f8f6f1 0%, #eee8dc 55%, #e8e1d4 100%);
+      font-family: 'Cormorant Garamond', serif;
+      color: #4b4338;
+    }
 
-.invite {
-  max-width: 650px;
-  margin: auto;
-  background: #fffdf9;
-  border: 2px solid #caa84b;
-  border-radius: 18px;
-  padding: 50px 25px;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-  animation: fadeIn 1s ease forwards;
-  opacity: 0;
-}
+    .invite {
+      position: relative;
+      width: 100%;
+      max-width: 720px;
+      background: linear-gradient(180deg, #fffdf9 0%, #fbf8f2 100%);
+      border: 2px solid #caa84b;
+      border-radius: 18px;
+      padding: 56px 28px 50px;
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.10);
+      overflow: hidden;
+      animation: fadeIn 1.1s ease forwards;
+      opacity: 0;
+      transform: translateY(10px);
+    }
 
-/* subtle inner border */
-.invite::before {
-  content: "";
-  position: absolute;
-  inset: 10px;
-  border: 1px solid rgba(202,168,75,0.4);
-  border-radius: 14px;
-  pointer-events: none;
-}
+    .invite::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(202, 168, 75, 0.45);
+      border-radius: 12px;
+      pointer-events: none;
+    }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
+    .corner {
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      pointer-events: none;
+      opacity: 0.75;
+      z-index: 1;
+    }
 
-h1 {
-  color: #b28a2f;
-  font-size: 2.6rem;
-  margin: 0;
-  letter-spacing: 2px;
-}
+    .corner::before,
+    .corner::after {
+      content: "";
+      position: absolute;
+      background: #caa84b;
+      border-radius: 2px;
+    }
 
-.subtitle {
-  color: #b28a2f;
-  font-style: italic;
-  margin-top: 10px;
-}
+    .corner::before {
+      width: 58px;
+      height: 2px;
+    }
 
-.divider {
-  height: 1px;
-  width: 80%;
-  margin: 25px auto;
-  background: linear-gradient(to right, transparent, #caa84b, transparent);
-}
+    .corner::after {
+      width: 2px;
+      height: 58px;
+    }
 
-.venue {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.5rem;
-  color: #b28a2f;
-}
+    .corner.tl { top: 22px; left: 22px; }
+    .corner.tr { top: 22px; right: 22px; transform: rotate(90deg); }
+    .corner.bl { bottom: 22px; left: 22px; transform: rotate(270deg); }
+    .corner.br { bottom: 22px; right: 22px; transform: rotate(180deg); }
 
-.map-button {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 12px 22px;
-  border-radius: 25px;
-  background: linear-gradient(135deg, #caa84b, #e5c76b);
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-}
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-.map-button:hover {
-  transform: translateY(-2px);
-}
+    h1 {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      font-size: clamp(2.2rem, 7vw, 3.6rem);
+      line-height: 1.05;
+      letter-spacing: 2px;
+      color: #b28a2f;
+      font-weight: 700;
+    }
 
-.verse {
-  color: #b28a2f;
-  margin-top: 25px;
-  font-style: italic;
-}
+    .subtitle,
+    .divider,
+    .date,
+    .time,
+    .time-note,
+    .cross,
+    .venue,
+    .address,
+    .map-button,
+    .dress,
+    .story,
+    .forever,
+    .message,
+    .verse {
+      position: relative;
+      z-index: 2;
+    }
 
-.time-note {
-  color: #888;
-}
+    .subtitle {
+      margin-top: 12px;
+      font-size: clamp(1.05rem, 3vw, 1.5rem);
+      font-style: italic;
+      color: #b28a2f;
+    }
 
-</style>
+    .divider {
+      width: 82%;
+      height: 1px;
+      margin: 28px auto;
+      background: linear-gradient(to right, transparent, rgba(202,168,75,0.95), transparent);
+    }
+
+    .date,
+    .time,
+    .dress,
+    .address {
+      margin: 0;
+      font-size: clamp(1.3rem, 3.8vw, 2rem);
+    }
+
+    .date { font-weight: 600; }
+    .time { margin-top: 8px; font-weight: 500; }
+
+    .time-note {
+      margin-top: 8px;
+      font-size: clamp(1rem, 2.8vw, 1.35rem);
+      color: #9a9388;
+    }
+
+    .cross {
+      margin: 10px 0 6px;
+      color: #caa84b;
+      font-size: 2.7rem;
+      line-height: 1;
+      text-shadow: 0 0 10px rgba(202,168,75,0.18);
+    }
+
+    .venue {
+      margin: 8px 0 6px;
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.2rem, 6.5vw, 3.5rem);
+      color: #b28a2f;
+      line-height: 1.1;
+    }
+
+    .address a {
+      color: #2f63c7;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      word-break: break-word;
+    }
+
+    .map-button {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 12px 26px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #c7a03b, #e3c66c);
+      color: #fff;
+      font-size: 1.05rem;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 10px 22px rgba(183,146,44,0.25);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .map-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 26px rgba(183,146,44,0.32);
+    }
+
+    .dress {
+      font-weight: 600;
+    }
+
+    .story {
+      margin-top: 8px;
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2rem, 5.8vw, 3.2rem);
+      color: #b28a2f;
+      line-height: 1.05;
+    }
+
+    .forever {
+      margin-top: 10px;
+      font-size: clamp(1.25rem, 4vw, 2rem);
+      color: #8d6a2b;
+      line-height: 1.2;
+    }
+
+    .message {
+      margin-top: 22px;
+      font-size: clamp(1.35rem, 4vw, 2rem);
+      line-height: 1.2;
+    }
+
+    .verse {
+      margin-top: 28px;
+      font-size: clamp(1.15rem, 3.4vw, 1.8rem);
+      color: #b28a2f;
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .verse-ref {
+      display: block;
+      margin-top: 5px;
+      font-size: clamp(1.05rem, 3vw, 1.55rem);
+      color: #b28a2f;
+      font-style: normal;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 18px 10px;
+      }
+
+      .invite {
+        padding: 46px 18px 42px;
+        border-radius: 14px;
+      }
+
+      .invite::before {
+        inset: 9px;
+      }
+
+      .corner {
+        width: 42px;
+        height: 42px;
+      }
+
+      .corner::before {
+        width: 42px;
+      }
+
+      .corner::after {
+        height: 42px;
+      }
+
+      .corner.tl { top: 16px; left: 16px; }
+      .corner.tr { top: 16px; right: 16px; }
+      .corner.bl { bottom: 16px; left: 16px; }
+      .corner.br { bottom: 16px; right: 16px; }
+
+      .map-button {
+        font-size: 0.98rem;
+        padding: 11px 20px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="invite">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
 
-<div class="invite">
+    <h1>DONOVAN &amp; DOMINIC</h1>
+    <div class="subtitle">invite you to celebrate their wedding day</div>
 
-<h1>DONOVAN & DOMINIC</h1>
-<div class="subtitle">invite you to celebrate their wedding day</div>
+    <div class="divider"></div>
 
-<div class="divider"></div>
+    <p class="date">Thursday, 9 April 2026</p>
+    <p class="time">9:30 AM</p>
+    <div class="time-note">Ceremony starts at 10:00</div>
 
-<p><strong>Thursday, 9 April 2026</strong></p>
-<p>9:30 AM</p>
-<p class="time-note">Ceremony starts at 10:00</p>
+    <div class="divider"></div>
 
-<div class="divider"></div>
+    <div class="cross">✝</div>
+    <div class="venue">Swan Lake Venue</div>
+    <p class="address">
+      <a href="https://maps.app.goo.gl/Y1C18izJJFZjcsW5A" target="_blank">
+        21 Gum Rd, Benoni AH, Benoni, 1509
+      </a>
+    </p>
 
-<div style="font-size:2rem; color:#caa84b;">✝</div>
-<div class="venue">Swan Lake Venue</div>
+    <a class="map-button" href="https://maps.app.goo.gl/Y1C18izJJFZjcsW5A" target="_blank">
+      📍 Open in Google Maps
+    </a>
 
-<p>
-<a href="https://maps.app.goo.gl/Y1C18izJJFZjcsW5A" target="_blank">
-21 Gum Rd, Benoni AH, Benoni, 1509
-</a>
-</p>
+    <div class="divider"></div>
 
-<a class="map-button" href="https://maps.app.goo.gl/Y1C18izJJFZjcsW5A" target="_blank">
-📍 Open in Google Maps
-</a>
+    <p class="dress">Dress Code: Semi-Formal to Formal</p>
 
-<div class="divider"></div>
+    <div class="divider"></div>
 
-<p><strong>Dress Code: Semi-Formal to Formal</strong></p>
+    <div class="story">God wrote our story...</div>
+    <div class="forever">and now we say yes to forever 🤍</div>
 
-<div class="divider"></div>
+    <div class="message">
+      We would love for you to be part<br>
+      of this special moment.
+    </div>
 
-<p style="font-family:'Great Vibes', cursive; font-size:2rem; color:#b28a2f;">
-God wrote our story...
-</p>
+    <div class="divider"></div>
 
-<p>and now we say yes to forever 🤍</p>
-
-<p>We would love for you to be part of this special moment.</p>
-
-<div class="divider"></div>
-
-<div class="verse">
-“We love because He first loved us”<br>
-1 John 4:19
-</div>
-
-</div>
-
+    <div class="verse">
+      “We love because He first loved us”
+      <span class="verse-ref">1 John 4:19</span>
+    </div>
+  </div>
 </body>
 </html>
