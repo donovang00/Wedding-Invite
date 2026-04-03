@@ -1,150 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Donovan & Dominic Wedding</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donovan & Dominic Wedding</title>
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Georgia', serif;
-    background: linear-gradient(to bottom, #f8f6f2, #f1ede6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
-.invite {
-    background: white;
-    max-width: 500px;
-    width: 90%;
-    padding: 40px 25px;
-    border: 2px solid #d4af37;
-    text-align: center;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-    border-radius: 8px;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-h1 {
-    color: #b08b43;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-    font-size: 26px;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 14px;
+      background:
+        radial-gradient(circle at top, #f8f6f1 0%, #ece7dc 100%);
+      font-family: 'Cormorant Garamond', serif;
+      color: #4b4338;
+    }
 
-.subtitle {
-    font-style: italic;
-    color: #b08b43;
-    margin-bottom: 25px;
-}
+    .invite {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      background: linear-gradient(180deg, #fffdf9 0%, #faf7f1 100%);
+      border: 3px solid #caa84b;
+      border-radius: 16px;
+      padding: 60px 34px 55px;
+      text-align: center;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.10);
+      overflow: hidden;
+    }
 
-.divider {
-    height: 1px;
-    background: #d4af37;
-    margin: 20px 0;
-}
+    .invite::before,
+    .invite::after {
+      content: "❦";
+      position: absolute;
+      font-size: 120px;
+      color: rgba(202, 168, 75, 0.16);
+      line-height: 1;
+      transform: rotate(-18deg);
+      pointer-events: none;
+    }
 
-.details {
-    color: #333;
-    margin: 10px 0;
-    font-size: 16px;
-}
+    .invite::before {
+      top: 12px;
+      left: 10px;
+    }
 
-.time-note {
-    font-size: 14px;
-    color: #888;
-}
+    .invite::after {
+      bottom: 16px;
+      right: 12px;
+      transform: rotate(162deg);
+    }
 
-.cross {
-    font-size: 26px;
-    color: #d4af37;
-    margin: 15px 0;
-}
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 6vw, 3.5rem);
+      letter-spacing: 2px;
+      color: #b28a2f;
+      font-weight: 700;
+    }
 
-.venue {
-    font-size: 22px;
-    color: #b08b43;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
+    .subtitle {
+      margin-top: 10px;
+      font-size: clamp(1.05rem, 3vw, 1.45rem);
+      font-style: italic;
+      color: #b28a2f;
+    }
 
-a {
-    color: #b08b43;
-    text-decoration: none;
-    font-weight: 600;
-}
+    .divider {
+      width: 86%;
+      height: 1.5px;
+      margin: 28px auto;
+      background: linear-gradient(to right, transparent, #caa84b, transparent);
+    }
 
-a:hover {
-    text-decoration: underline;
-}
+    .date,
+    .time,
+    .dress,
+    .address {
+      font-size: clamp(1.25rem, 3.7vw, 2rem);
+      margin: 0;
+    }
 
-.message {
-    color: #b08b43;
-    font-style: italic;
-    margin: 20px 0;
-    font-size: 16px;
-}
+    .date {
+      font-weight: 600;
+    }
 
-.text {
-    color: #555;
-    margin: 10px 0;
-}
+    .time {
+      margin-top: 8px;
+      font-weight: 500;
+    }
 
-.verse {
-    margin-top: 20px;
-    font-style: italic;
-    color: #b08b43;
-    font-size: 15px;
-}
-</style>
+    .time-note {
+      margin-top: 8px;
+      font-size: clamp(1rem, 2.8vw, 1.35rem);
+      color: #8f8a83;
+    }
+
+    .cross {
+      margin: 12px 0 8px;
+      color: #caa84b;
+      font-size: 2.6rem;
+      line-height: 1;
+    }
+
+    .venue {
+      margin: 8px 0 6px;
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2rem, 6vw, 3.3rem);
+      color: #b28a2f;
+      font-weight: 400;
+    }
+
+    .address a {
+      color: #2b63c6;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      word-break: break-word;
+    }
+
+    .dress {
+      font-weight: 600;
+    }
+
+    .story {
+      margin-top: 10px;
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(1.8rem, 5.5vw, 3rem);
+      color: #b28a2f;
+      line-height: 1.15;
+    }
+
+    .forever {
+      margin-top: 8px;
+      font-size: clamp(1.25rem, 3.9vw, 2rem);
+      color: #8f672b;
+    }
+
+    .message {
+      margin-top: 22px;
+      font-size: clamp(1.3rem, 4vw, 2rem);
+      line-height: 1.2;
+    }
+
+    .verse {
+      margin-top: 28px;
+      font-size: clamp(1.15rem, 3.4vw, 1.8rem);
+      color: #b28a2f;
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .verse-ref {
+      display: block;
+      margin-top: 4px;
+      font-size: clamp(1.05rem, 3vw, 1.55rem);
+      color: #b28a2f;
+      font-style: normal;
+    }
+
+    @media (max-width: 480px) {
+      .invite {
+        padding: 42px 22px 40px;
+        border-radius: 12px;
+      }
+
+      .invite::before,
+      .invite::after {
+        font-size: 92px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<div class="invite">
-
+  <div class="invite">
     <h1>DONOVAN & DOMINIC</h1>
     <div class="subtitle">invite you to celebrate their wedding day</div>
 
     <div class="divider"></div>
 
-    <div class="details">Thursday, 9 April 2026</div>
-    <div class="details">9:30 AM</div>
+    <p class="date">Thursday, 9 April 2026</p>
+    <p class="time">9:30 AM</p>
     <div class="time-note">Ceremony starts at 10:00</div>
 
     <div class="divider"></div>
 
+    <div class="cross">✝</div>
     <div class="venue">Swan Lake Venue</div>
-    <div class="details">
-        <a href="https://maps.app.goo.gl/Y1C18izJJFZjcsW5A" target="_blank">
-            View Location
-        </a>
+    <p class="address">
+      <a href="https://maps.app.goo.gl/Y1C18izJJFZjcsW5A" target="_blank">
+        21 Gum Rd, Benoni AH, Benoni, 1509
+      </a>
+    </p>
+
+    <div class="divider"></div>
+
+    <p class="dress">Dress Code: Semi-Formal to Formal</p>
+
+    <div class="divider"></div>
+
+    <div class="story">God wrote our story...</div>
+    <div class="forever">and now we say yes to forever 🤍</div>
+
+    <div class="message">
+      We would love for you to be part<br>
+      of this special moment.
     </div>
 
     <div class="divider"></div>
 
-    <div class="details">Dress Code: Semi-Formal to Formal</div>
-
-    <div class="cross">✝</div>
-
-    <div class="message">
-        God wrote our story...<br>
-        and now we say yes to forever 🤍
-    </div>
-
-    <div class="text">
-        We would love for you to be part<br>
-        of this special moment.
-    </div>
-
     <div class="verse">
-        "We love because He first loved us"<br>
-        1 John 4:19
+      “We love because He first loved us”
+      <span class="verse-ref">1 John 4:19</span>
     </div>
-
-</div>
-
+  </div>
 </body>
 </html>
